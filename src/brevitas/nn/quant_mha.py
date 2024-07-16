@@ -541,7 +541,8 @@ class QuantMultiheadAttention(Module):
 
         B, Nt, E = q.shape
         q_scaled = q / math.sqrt(E)
-
+        k_transposed = k
+               
         # Quantize q_scaled and k_transposed
         q_scaled = self.q_scaled_quant(q_scaled)
         k_transposed = self.k_transposed_quant(k_transposed).transpose(-2, -1)
